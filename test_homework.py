@@ -5,10 +5,10 @@ def test_dark_theme_by_time():
     """
     Протестируйте правильность переключения темной темы на сайте в зависимости от времени
     """
-    current_time = time(hour=23)
+    current_time = time(hour=16)
     # TODO переключите темную тему в зависимости от времени суток (с 22 до 6 часов утра - ночь)
 
-    is_dark_theme = None
+    is_dark_theme = True
 
     if time(hour=22) <= current_time or current_time <= time(hour=6):
         is_dark_theme = True
@@ -97,6 +97,7 @@ def test_readable_function():
     open_browser(browser_name="Chrome")
     go_to_companyname_homepage(page_url="https://companyname.com")
     find_registration_button_on_login_page(page_url="https://companyname.com/login", button_text="Register")
+
 
 
 def open_browser(browser_name):
