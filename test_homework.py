@@ -5,10 +5,10 @@ def test_dark_theme_by_time():
     """
     Протестируйте правильность переключения темной темы на сайте в зависимости от времени
     """
-    current_time = time(hour=16)
+    current_time = time(hour=23)
     # TODO переключите темную тему в зависимости от времени суток (с 22 до 6 часов утра - ночь)
 
-    is_dark_theme = True
+    is_dark_theme = None
 
     if time(hour=22) <= current_time or current_time <= time(hour=6):
         is_dark_theme = True
@@ -40,7 +40,6 @@ def test_dark_theme_by_time_and_user_choice():
             is_dark_theme = False
     else:
         is_dark_theme = True
-
 
     assert is_dark_theme is True
 
@@ -92,6 +91,15 @@ def test_find_suitable_user():
 # >>> open_browser(browser_name="Chrome")
 # "Open Browser [Chrome]"
 
+def get_readable_func_name(func, *args):
+    func_name = func.__name__.replace('_', ' ').title()
+    arguments = ''
+    for arg in args:
+        arguments = ", ".join(args)
+    final_result = f"{func_name} [{arguments}]"
+    print(final_result)
+    return final_result
+
 
 def test_readable_function():
     open_browser(browser_name="Chrome")
@@ -99,17 +107,16 @@ def test_readable_function():
     find_registration_button_on_login_page(page_url="https://companyname.com/login", button_text="Register")
 
 
-
 def open_browser(browser_name):
-    actual_result = None
+    actual_result = get_readable_func_name(open_browser, browser_name)
     assert actual_result == "Open Browser [Chrome]"
 
 
 def go_to_companyname_homepage(page_url):
-    actual_result = None
+    actual_result = get_readable_func_name(go_to_companyname_homepage, page_url)
     assert actual_result == "Go To Companyname Homepage [https://companyname.com]"
 
 
 def find_registration_button_on_login_page(page_url, button_text):
-    actual_result = None
+    actual_result = get_readable_func_name(find_registration_button_on_login_page, page_url, button_text)
     assert actual_result == "Find Registration Button On Login Page [https://companyname.com/login, Register]"
